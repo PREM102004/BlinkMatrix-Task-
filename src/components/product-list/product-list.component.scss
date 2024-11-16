@@ -1,58 +1,50 @@
-.addnewbtn{
-    width: 8rem;
-    font-size: 12px;
-    border: 2px solid black; 
-    color: rgb(0, 0, 0); 
-    transition: background-color 0.3s ease, color 0.3s ease; 
-    margin-bottom: 0.5rem;
-  }
-  
-  .addnewbtn:hover {
-    background: linear-gradient(90deg, #1e3c72, #2a5298); 
-    color: white;
-    border-color: #1e3c72; 
-  }
-  .details-heading h3 {
-    position: relative;
-    display: inline-block;
-   
-  }
-  
-  .details-heading h3::after {
-    content: '';
-    position: absolute;
-    bottom: 10px; /* Adjust the distance below the text */
-    left: 50%;
-    transform: translateX(-50%); /* Center the underline */
-    width: 50%; /* Adjust underline width */
-    height: 2px; /* Thickness of the underline */
-    background-color: black; /* Color of the underline */
-  }
-  .product-image-wrapper:hover img {
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
-  }
-  .card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-  }
-  
- 
+.addnewbtn {
+  width: 8rem;
+  font-size: 12px;
+  border: 2px solid black;
+  color: rgb(0, 0, 0);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-bottom: 0.5rem;
+}
 
+.addnewbtn:hover {
+  background: linear-gradient(90deg, #1e3c72, #2a5298);
+  color: white;
+  border-color: #1e3c72;
+}
+.details-heading h3 {
+  position: relative;
+  display: inline-block;
+}
+
+.details-heading h3::after {
+  content: "";
+  position: absolute;
+  bottom: 10px; 
+  left: 50%;
+  transform: translateX(-50%); 
+  width: 50%; 
+  height: 2px;
+  background-color: black; 
+}
+.product-image-wrapper:hover img {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
 
 .button-detail {
-    
-    background-color: #747272;
-    color: #000000;
-    height: 30px;
-    border-radius: 4px;
+  background-color: #747272;
+  color: #000000;
+  height: 30px;
+  border-radius: 4px;
 }
-.button-detail:hover{
-        color: #ffff !important;
-
-      }
-
-
+.button-detail:hover {
+  color: #ffff !important;
+}

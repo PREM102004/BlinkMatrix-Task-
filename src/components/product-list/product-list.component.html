@@ -1,114 +1,123 @@
 <app-header></app-header>
 
 <section style="background-color: #f1f3f6">
-    <div *ngIf="!selectedProduct" class="text-center container py-2">
-      <div style="display: flex; justify-content: center; align-items: center">
-        <div class="details-heading">
-          <h3 class="fw-bold mb-0" style="padding: 25px; color: #020202;">
-            Today's Deals
-          </h3>
-        </div>
+  <div *ngIf="!selectedProduct" class="text-center container py-2">
+    <div style="display: flex; justify-content: center; align-items: center">
+      <div class="details-heading">
+        <h3 class="fw-bold mb-0" style="padding: 25px; color: #020202">
+          Today's Deals
+        </h3>
       </div>
-  
-      <button
-        class="btn btn-primary btn-sm mt-3 addnewbtn"
-        style="background-color: #b5b6b8; border: none"
-        type="button"
-        (click)="addNewProduct()"
+    </div>
+
+    <button
+      class="btn btn-primary btn-sm mt-3 addnewbtn"
+      style="background-color: #b5b6b8; border: none"
+      type="button"
+      (click)="addNewProduct()"
+    >
+      Add New Product
+    </button>
+
+    <div class="row mt-4">
+      <div
+        class="col-lg-3 col-md-4 col-sm-6 mb-4"
+        *ngFor="let product of products$ | async"
       >
-        Add New Product
-      </button>
-  
-      <div class="row mt-4">
         <div
-          class="col-lg-3 col-md-4 col-sm-6 mb-4"
-          *ngFor="let product of products$ | async"
+          class="card shadow-sm"
+          style="height: 100%; border-radius: 5px; border: none"
         >
           <div
-            class="card shadow-sm"
-            style="height: 100%; border-radius: 5px; border: none"
+            class="product-image-wrapper"
+            (click)="viewProductDetail(product.id)"
+            style="cursor: pointer; padding: 15px"
           >
-            <div
-              class="product-image-wrapper"
-              (click)="viewProductDetail(product.id)"
-              style="cursor: pointer; padding: 15px"
+            <img
+              [src]="product.image || 'https://via.placeholder.com/150'"
+              class="img-fluid"
+              alt="Product Image"
+              style="border-radius: 5px; max-height: 180px; object-fit: cover"
+            />
+          </div>
+          <div
+            class="card-body text-start p-3"
+            (click)="viewProductDetail(product.id)"
+          >
+            <h6
+              class="card-title text-dark text-truncate mb-1"
+              style="font-size: 1rem; font-weight: 500"
             >
-              <img
-                [src]="product.image || 'https://via.placeholder.com/150'"
-                class="img-fluid"
-                alt="Product Image"
-                style="border-radius: 5px; max-height: 180px; object-fit: cover"
-              />
+              {{ product.name }}
+            </h6>
+            <div class="d-flex align-items-center mb-2">
+              <span class="badge bg-success me-2">{{ product.rating }} ★</span>
+              <small class="text-muted ms-2">(120 ratings)</small>
             </div>
-            <div class="card-body text-start p-3"  (click)="viewProductDetail(product.id)">
-              <h6
-                class="card-title text-dark text-truncate mb-1"
-                style="font-size: 1rem; font-weight: 500"
+            <h5 class="text-danger fw-bold mb-2" style="font-size: 1.2rem">
+              {{
+                product.price | currency : "INR" : "symbol" : "1.0-0" : "en-IN"
+              }}
+            </h5>
+            <p class="mb-1">
+              <span
+                style="
+                  text-decoration: line-through;
+                  color: #888;
+                  font-size: 0.9rem;
+                "
               >
-                {{ product.name }}
-              </h6>
-              <div class="d-flex align-items-center mb-2">
-                <span class="badge bg-success me-2">{{product.rating}} ★</span>
-                <small class="text-muted ms-2">(120 ratings)</small>
-            </div>
-              <h5 class="text-danger fw-bold mb-2" style="font-size: 1.2rem">
+                MRP:
                 {{
-                  product.price | currency : "INR" : "symbol" : "1.0-0" : "en-IN"
+                  product.mrp | currency : "INR" : "symbol" : "1.0-0" : "en-IN"
                 }}
-              </h5>
-              <p class="mb-1">
-                <span
-                  style="text-decoration: line-through; color: #888; font-size: 0.9rem"
-                >
-                  MRP:
-                  {{
-                    product.mrp | currency : "INR" : "symbol" : "1.0-0" : "en-IN"
-                  }}
-                </span>
-              </p>
-              <p class="text-success mb-1" style="font-size: 0.9rem">
-                Save {{ (product.mrp - product.price) | currency : "INR" : "symbol" : "1.0-0" : "en-IN" }}
-              </p>
-            </div>
-            <div
-              class="card-footer p-2"
-              style="background-color: #f8f9fa; border-top: none"
-            >
-              <div class="d-flex justify-content-between align-items-center">
-                <button
-              
-                  class="button-detail"
-                  style="font-size: 0.85rem"
-                  (click)="editProduct(product)"
-                >
-                  Edit
-                </button>
-                <button
-                  class="btn btn-outline-danger btn-sm"
-                  style="font-size: 0.85rem"
-                  (click)="deleteProduct(product.id)"
-                >
-                  Delete
-                </button>
-                <button
-                  class="btn btn-warning btn-sm"
-                  style="background-color: #ff9f00; border-color: #ff9f00"
-                  (click)="viewProductDetail(product.id)"
-                >
-                  <img
-                    src="https://img.icons8.com/ios/50/ffffff/shopping-cart.png"
-                    alt="Cart"
-                    style="width: 18px; height: 18px"
-                  />
-                </button>
-              </div>
+              </span>
+            </p>
+            <p class="text-success mb-1" style="font-size: 0.9rem">
+              Save
+              {{
+                product.mrp - product.price
+                  | currency : "INR" : "symbol" : "1.0-0" : "en-IN"
+              }}
+            </p>
+          </div>
+          <div
+            class="card-footer p-2"
+            style="background-color: #f8f9fa; border-top: none"
+          >
+            <div class="d-flex justify-content-between align-items-center">
+              <button
+                class="button-detail"
+                style="font-size: 0.85rem"
+                (click)="editProduct(product)"
+              >
+                Edit
+              </button>
+              <button
+                class="btn btn-outline-danger btn-sm"
+                style="font-size: 0.85rem"
+                (click)="deleteProduct(product.id)"
+              >
+                Delete
+              </button>
+              <button
+                class="btn btn-warning btn-sm"
+                style="background-color: #ff9f00; border-color: #ff9f00"
+                (click)="viewProductDetail(product.id)"
+              >
+                <img
+                  src="https://img.icons8.com/ios/50/ffffff/shopping-cart.png"
+                  alt="Cart"
+                  style="width: 18px; height: 18px"
+                />
+              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
-  
+  </div>
+</section>
 
 <app-edit-product
   *ngIf="selectedProduct"

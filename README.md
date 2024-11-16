@@ -1,27 +1,46 @@
-# TestBlindMatrix
+# BlinkMatrix Task
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.4.
+This repository contains an Angular project for the BlinkMatrix task. Follow the instructions below to clone, set up, and run the project in your local environment.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## **Repository Link**
 
-## Code scaffolding
+Click the link to access this repository:  
+[GitHub Repository](https://github.com/PREM102004/BlinkMatrix-Task-.git)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+## **Steps to Open and Run the Project**
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. **Clone the Repository**
+   - Copy the repository link:  
+     ```
+     https://github.com/PREM102004/BlinkMatrix-Task-.git
+     ```
+   - Open your terminal or command prompt and run the following command:
+     ```bash
+     git clone https://github.com/PREM102004/BlinkMatrix-Task-.git
+     ```
 
-## Running unit tests
+2. **Navigate to the Project Directory**
+   ```bash
+   cd BlinkMatrix-Task-
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+ 3. **Install Dependencies**
+   Ensure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed on your system.  
+   Then, run the following command in your terminal to install the required project dependencies:
+   ```bash
+   npm install
 
-## Running end-to-end tests
+ 4. **Run the Development Server**
+   Start the Angular development server by running the following command:
+   ```bash
+   ng serve
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+   ** Angular Live Development Server is listening on http://localhost:4200/ **  
 
-## Further help
+   ---
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+ 
