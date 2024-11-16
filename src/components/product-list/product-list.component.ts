@@ -24,7 +24,7 @@ export class ProductListComponent {
   }
 
   addNewProduct() {
-    debugger;
+    
     this.selectedProduct = {
       id: 0,
       name: '',

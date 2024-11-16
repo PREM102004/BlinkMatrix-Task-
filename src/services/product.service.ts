@@ -19,13 +19,13 @@ export class ProductService {
   }
 
   private saveProductsInLocalStorage(products: Products[]): void {
-    debugger;
+    
     localStorage.setItem('products', JSON.stringify(products));
     this.productSubject.next(products); 
   }
 
   addNewProduct(product: Products): void {
-    debugger;
+    
     const products = this.getProductsFromLocalStorage();
     product.id = new Date().getTime(); 
     products.push(product);

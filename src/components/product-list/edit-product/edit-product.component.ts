@@ -26,7 +26,7 @@ export class EditProductComponent {
     }
   }
   saveProduct() {
-    debugger;
+    
     this.productSaved.emit(this.product);
   }
 }

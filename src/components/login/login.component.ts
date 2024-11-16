@@ -19,7 +19,7 @@ export class LoginComponent {
   };
   constructor(private router: Router) {}
   onSubmit() {
-    debugger;
+    
     const isLocaldata = localStorage.getItem('authStorage');
     if (isLocaldata != null) {
       const users = JSON.parse(isLocaldata);
