@@ -1,34 +1,38 @@
 <div class="bgcolor">
   <div class="container">
     <nav class="navbar navbar-expand navbar-light justify-content-between">
-      <a class="navbar-brand fw-bold col-7 text-center" href="#">Shop Now <i class="fa-brands fa-shopify"></i></a>
+      <a class="navbar-brand fw-bold col-7 text-center" href="#"
+        >Shop Now <i class="fa-brands fa-shopify"></i
+      ></a>
       <div class="d-flex col-5 justify-content-center">
-        
-        <a 
-          class="btn btn-link me-3 nav-btn" 
-          [routerLink]="['/productlist']" 
-          routerLinkActive="active-link">
+        <a
+          class="btn btn-link me-3 nav-btn"
+          [routerLink]="['/productlist']"
+          routerLinkActive="active-link"
+        >
           Best Deals
         </a>
 
-        
-        <a 
-          class="btn btn-link nav-btn" 
-          [routerLink]="['/cart']" 
-          routerLinkActive="active-link">
+        <a
+          class="btn btn-link nav-btn"
+          [routerLink]="['/cart']"
+          routerLinkActive="active-link"
+        >
           Cart
           <i class="fa-solid fa-cart-shopping ms-1"></i>
-          <span 
-          class="badge badge-pill badge-danger position-absolute top-0 start-100 translate-middle" 
-          *ngIf="cartItemCount > 0">
-          {{ cartItemCount }}
-        </span>
+          <span
+            class="badge badge-pill badge-danger position-absolute top-0 start-100 translate-middle"
+            *ngIf="cartItemCount > 0"
+          >
+            {{ cartItemCount }}
+          </span>
         </a>
-        <a 
+        <a
           class="btn btn-link nav-btn"
           (click)="logout()"
-          routerLinkActive="active-link" >
-         Logout
+          routerLinkActive="active-link"
+        >
+          Logout
         </a>
       </div>
     </nav>

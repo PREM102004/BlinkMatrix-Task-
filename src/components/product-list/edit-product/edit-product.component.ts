@@ -3,22 +3,19 @@ import { Component, EventEmitter, input, Input, Output } from '@angular/core';
 import { Products } from '../../../modals/products.model';
 import { FormsModule } from '@angular/forms';
 
-
 @Component({
   selector: 'app-edit-product',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './edit-product.component.html',
-  styleUrl: './edit-product.component.scss'
+  styleUrl: './edit-product.component.scss',
 })
 export class EditProductComponent {
-
-
-  @Input() product! : Products;
+  @Input() product!: Products;
   @Output() productSaved = new EventEmitter<Products>();
-  @Output() cancel = new EventEmitter<void>;
+  @Output() cancel = new EventEmitter<void>();
 
-  onImageUpload(event : Event): void{
+  onImageUpload(event: Event): void {
     const file = (event.target as HTMLInputElement).files?.[0];
     if (file) {
       const reader = new FileReader();
@@ -28,8 +25,8 @@ export class EditProductComponent {
       reader.readAsDataURL(file);
     }
   }
-  saveProduct(){
-    debugger
-  this.productSaved.emit(this.product);
+  saveProduct() {
+    debugger;
+    this.productSaved.emit(this.product);
   }
 }

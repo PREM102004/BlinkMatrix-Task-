@@ -1,66 +1,65 @@
-
-.navbar-expand{
-    padding: 10px;
-    background-color: bisque;
-    margin-bottom: 1px;
+.navbar-expand {
+  padding: 10px;
+  background-color: bisque;
+  margin-bottom: 1px;
 }
-.bgcolor{
-    background-color: #f8f9fa;
+.bgcolor {
+  background-color: #f8f9fa;
 }
 .nav-btn {
-    text-decoration: none;
-    color: black;
-    position: relative;
-    transition: all 0.3s ease;
-  }
-  
-  .nav-btn:hover::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: black;
-    opacity: 0.5;
-    transition: all 0.3s ease;
-  }
-  
-  .active-link {
-    color: black;
-    font-weight: bold;
-  }
-  
-  .active-link::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: black;
-    opacity: 1;
-    transition: all 0.3s ease;
-  }
-  
-  .nav-link {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .badge {
-    background-color: #dc3545;
-    color: white;
-    font-size: 12px;
-    padding: 5px 8px;
-    border-radius: 50%;
-    font-weight: bold;
-  }
-  
-  .badge-pill {
-    display: inline-block;
-    vertical-align: top;
-    position: absolute;
-    top: -10px;
-    right: -25 px;
-  }
+  text-decoration: none;
+  color: black;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.active-link {
+  color: black;
+  font-weight: bold;
+}
+
+.active-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.nav-link {
+  position: relative;
+  display: inline-block;
+}
+
+.badge {
+  background-color: #dc3545;
+  color: white;
+  font-size: 12px;
+  padding: 5px 8px;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+.badge-pill {
+  display: inline-block;
+  vertical-align: top;
+  position: absolute;
+  top: -10px;
+  right: -25 px;
+}
