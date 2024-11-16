@@ -1,0 +1,63 @@
+<app-header></app-header>
+<div *ngIf="product" class="container-fluid  p-4 bg-light shadow-sm rounded">
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <div class="details-heading">
+          <h3 class="fw-bold mb-0" style="padding: 25px;">Product Details</h3>
+        </div>
+      </div>
+    <div class="row" style="margin-top: 20px;">
+        <!-- Product Image Section -->
+        <div class="col-md-6 text-center details-image">
+            <img [src]="product.image || 'https://via.placeholder.com/400'" alt="Product Image" class="img-fluid  shadow" style="max-height: 650px;" />
+        </div>
+
+        <!-- Product Details Section -->
+        <div class="col-md-6">
+            <h4 class="mb-3">{{ product.name }}</h4>
+
+            
+            <div class="d-flex align-items-center mb-2">
+                <span class="badge bg-success me-2">{{product.rating}} ★</span>
+                <small class="text-muted ms-2">(120 ratings)</small>
+            </div>
+            <p class="text-muted mb-2">{{ product.description || 'No description available' }}</p>
+
+            <!-- Price and MRP Section -->
+            <div>
+                <h4 class="text-danger">Price: {{ product.price | currency:'INR':'symbol':'1.0-0':'en-IN' }}</h4>
+                <p class="text-muted">
+                    <span style="text-decoration: line-through;">MRP: {{ product.mrp | currency:'INR':'symbol':'1.0-0':'en-IN' }}</span>
+                </p>
+            </div>
+
+            <!-- Quantity Selector -->
+            <div class="d-flex align-items-center mt-3">
+                <button (click)="decreaseQuantity()" class="btn btn-outline-secondary me-2">-</button>
+                <input type="number" [(ngModel)]="quantity" min="1" class="form-control text-center" style="width: 60px;" />
+                <button (click)="increaseQuantity()" class="btn btn-outline-secondary ms-2">+</button>
+            </div>
+
+            <!-- Add to Cart and Buy Now Buttons -->
+            <div class="d-flex flex-wrap gap-3 mt-4">
+                <button class="btn btn-warning d-flex align-items-center px-3" (click)="addToCart()">
+                    <img src="https://img.icons8.com/ios/50/000000/shopping-cart.png" alt="Add to Cart" style="width: 20px; height: 20px;" class="me-2" />
+                    Add to Cart
+                </button>
+                <button class="btn btn-primary">Buy Now</button>
+            </div>
+
+            <!-- Additional Features -->
+            <ul class="list-group list-group-flush mt-4">
+                <li class="list-group-item">
+                    <strong>Delivery:</strong> Free delivery by <span class="text-success">Tomorrow</span>
+                </li>
+                <li class="list-group-item">
+                    <strong>Warranty:</strong> 1-year warranty included
+                </li>
+                <li class="list-group-item">
+                    <strong>Stock:</strong> In Stock
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

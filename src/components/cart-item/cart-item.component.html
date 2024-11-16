@@ -1,0 +1,50 @@
+<app-header></app-header>
+
+<div class="cart-container row">
+    <div class="col-12 col-md-12">
+        <div class="p-2 text-center bg-white rounded shadow">
+            <h2 class="mb-0">Shopping Cart <i class="fa-solid fa-cart-shopping"></i></h2>
+        </div>
+    </div>
+    <div class="col-8" *ngFor="let product of cart">
+      
+        <div class="item-details row">
+            <div class="cart-image col-5">
+                <img [src]="product.image || 'https://via.placeholder.com/150'" alt="Product Image" class="img-fluid" />
+            </div>
+            <div class="col-7">
+          <h5>{{ product.name }}</h5>
+         
+          <p>{{ product.description }}</p>
+          <div class="product-price">
+            <p>{{ product.price | currency:'INR':'symbol':'1.0-0':'en-IN' }}</p>
+          </div>
+         
+          <div>
+            <button (click)="increaseQuantity(product.id)">+</button>
+            <span>{{ product.quantity }}</span>
+            <button (click)="decreaseQuantity(product.id)">-</button>
+          </div>
+          <button (click)="removeFromCart(product.id)">Remove</button>
+            
+       
+        
+        </div>
+      </div>
+    </div>
+   
+   <div class="col-4 ">
+    <div class="cart-totals">
+        <div style="border-bottom: 1px solid #000;">
+            <h3>Price Details</h3>
+        </div>
+      <h4>Total Quantity:( {{ totalQuantity }} )</h4>
+      <h4>Total Price: {{ totalPrice | currency:'INR':'symbol':'1.0-0':'en-IN' }}</h4>
+      <div class="d-flex p-0">
+      <button class="btn-save" >Buy Now</button>
+      <button class="btn-cancel" (click)="clearCart()">Clear Cart</button>
+    </div>
+    </div>
+</div>
+  </div>
+  
