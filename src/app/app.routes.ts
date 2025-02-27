@@ -6,9 +6,9 @@ import { CartItemComponent } from '../components/cart-item/cart-item.component';
 import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
-    {path:'',redirectTo:'/login',pathMatch:'full'},
+    {path:'',redirectTo:'/productlist',pathMatch:'full'},
     {path:'login',component:LoginComponent},
-    {path:'productlist',component:ProductListComponent,canActivate:[authGuard]},
+    {path:'productlist',component:ProductListComponent},
     { path: 'product/:id', component: ProductDetailsComponent },
     { path: 'cart', component:CartItemComponent },
 ];
