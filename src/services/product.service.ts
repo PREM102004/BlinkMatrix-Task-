@@ -32,7 +32,7 @@ export class ProductService {
     this.saveProductsInLocalStorage(products);
   }
 
-  editProduct(updatedProduct: Products): void {
+  editProduct(updatedProduct: Products): void { 
     const products = this.getProductsFromLocalStorage();
     const updatedProducts = products.map((p) =>
       p.id === updatedProduct.id ? updatedProduct : p
