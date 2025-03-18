@@ -27,12 +27,12 @@ export class CartItemComponent {
     });
   }
 
-  increaseQuantity(productId: number) {
+  increaseQuantity(productId: any) {
     this.cartservice.increaseQuantity(productId);
     this.updateCartTotals();
   }
 
-  decreaseQuantity(productId: number) {
+  decreaseQuantity(productId: any) {
     this.cartservice.decreaseQuantity(productId);
     this.updateCartTotals();
   }
@@ -46,7 +46,7 @@ export class CartItemComponent {
     }
   }
 
-  removeFromCart(productId: number) {
+  removeFromCart(productId: any) {
     this.cartservice.removeFromCart(productId);
     this.updateCartTotals();
   }

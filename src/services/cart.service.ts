@@ -39,7 +39,7 @@ export class CartService {
     this.cartSubject.next([]);
     this.saveCartDetails([]);
   }
-  removeFromCart(productId: number) {
+  removeFromCart(productId: any) {
     let cart = this.cartSubject.getValue();
     cart = cart.filter((item) => item.id !== productId);
     this.cartSubject.next(cart);
@@ -58,7 +58,7 @@ export class CartService {
       .reduce((sum, product) => sum + product.price * product.quantity, 0);
   }
 
-  increaseQuantity(productId: number) {
+  increaseQuantity(productId: any) {
     const cart = this.cartSubject.getValue();
     const product = cart.find((item) => item.id === productId);
     if (product) {
@@ -68,7 +68,7 @@ export class CartService {
     }
   }
 
-  decreaseQuantity(productId: number) {
+  decreaseQuantity(productId: any) {
     const cart = this.cartSubject.getValue();
     const product = cart.find((item) => item.id === productId);
     if (product && product.quantity > 1) {

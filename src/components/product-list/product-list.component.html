@@ -19,13 +19,10 @@
       Add New Product
     </button>
     
-  <input [(ngModel)]="newItem" placeholder="Enter item name">
-  <button (click)="addItem()">Add Item</button>
-
     <div class="row mt-4">
       <div
         class="col-lg-3 col-md-4 col-sm-6 mb-4"
-        *ngFor="let product of products$ | async"
+        *ngFor="let product of items"
       >
         <div
           class="card shadow-sm"

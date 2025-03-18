@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
+
 @Component({
   selector: 'app-product-list',
   standalone: true,
@@ -18,23 +19,23 @@ import { FormsModule } from '@angular/forms';
 export class ProductListComponent {
   selectedProduct: Products | null = null;
   products$!: Observable<Products[]>;
-  items: any[] = [];
+  items: Products[] = [];
   newItem: string = '';
   constructor(private productService: ProductService, private router: Router) {}
 
-  ngOnInit(): void {
-    this.products$ = this.productService.products$;
+  async ngOnInit(): Promise<void> {
+    this.items = await this.productService.getItems();
+    console.log('this.items: ', this.items);
   }
-  addItem() {
-    const newProduct = { name: 'computer', price: 2999 };
-    this.productService.addItem('products', newProduct)
-      .then(() => console.log('Product added'))
-      .catch(error => console.error('Error adding product:', error));
-  }
+  // addItem() {
+  //   const newProduct = { name: 'computercpu', price: 1999 };
+  //   this.productService.addItem('products', newProduct)
+  //     .then(() => console.log('Product added'))
+  //     .catch(error => console.error('Error adding product:', error));
+  // }
   addNewProduct() {
     
     this.selectedProduct = {
-      id: 0,
       name: '',
       description: '',
       price: 0,
@@ -52,11 +53,11 @@ export class ProductListComponent {
   onProductSaved(product: Products) {
     this.selectedProduct = null;
 
-    if (product.id === 0) {
-      this.productService.addNewProduct(product);
+    if (!product.id) {
+      this.productService.addItem('Products',product);
       alert('New Product Added');
     } else {
-      this.productService.editProduct(product);
+      this.productService.updateProduct('Products',product,product.id);
       alert('Product Updated');
     }
   }
@@ -65,11 +66,11 @@ export class ProductListComponent {
     this.selectedProduct = null;
   }
 
-  deleteProduct(productId: number) {
+  deleteProduct(productId: any) {
     this.productService.deleteProduct(productId);
     alert('Product Deleted');
   }
-  viewProductDetail(productId: number) {
+  viewProductDetail(productId: any) {
     this.router.navigate(['/product', productId]);
   }
 }
