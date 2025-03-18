@@ -6,23 +6,31 @@ import { CommonModule } from '@angular/common';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [HeaderComponent, CommonModule, EditProductComponent],
+  imports: [HeaderComponent, CommonModule, EditProductComponent,FormsModule],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss',
 })
 export class ProductListComponent {
   selectedProduct: Products | null = null;
   products$!: Observable<Products[]>;
+  items: any[] = [];
+  newItem: string = '';
   constructor(private productService: ProductService, private router: Router) {}
 
   ngOnInit(): void {
     this.products$ = this.productService.products$;
   }
-
+  addItem() {
+    const newProduct = { name: 'computer', price: 2999 };
+    this.productService.addItem('products', newProduct)
+      .then(() => console.log('Product added'))
+      .catch(error => console.error('Error adding product:', error));
+  }
   addNewProduct() {
     
     this.selectedProduct = {

@@ -1,18 +1,28 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Products } from '../modals/products.model';
+import { addDoc, collection, Firestore } from '@angular/fire/firestore';
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  constructor() {}
+  constructor(private firestore: Firestore) {}
+
 
   private productSubject = new BehaviorSubject<Products[]>(
     this.getProductsFromLocalStorage()
   );
   products$: Observable<Products[]> = this.productSubject.asObservable();
 
+  // addItem(collectionName: string, data: any) {
+  //   return this.firestore.collection(collectionName).add(data); 
+  // }
+  addItem(collectionName: string, data: any) {
+    const colRef = collection(this.firestore, collectionName);
+    return addDoc(colRef, data);
+  }
   private getProductsFromLocalStorage(): Products[] {
     const products = localStorage.getItem('products');
     return products ? JSON.parse(products) : [];
