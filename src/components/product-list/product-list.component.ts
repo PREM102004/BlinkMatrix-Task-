@@ -73,4 +73,7 @@ export class ProductListComponent {
   viewProductDetail(productId: any) {
     this.router.navigate(['/product', productId]);
   }
+  onFormChange(){
+    
+  }
 }
